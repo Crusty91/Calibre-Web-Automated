@@ -102,6 +102,7 @@ class NewBookProcessor:
             end_format = self.target_format # If end_format isn't given, the file is converted to the target format specified in the CWA Settings page
 
         original_filepath = Path(self.filepath)
+        target_filename = f"{original_filepath.parent.stem}_{original_filepath.stem}"
         target_filepath = f"{self.tmp_conversion_dir}{original_filepath.stem}.{end_format}"
         try:
             t_convert_book_start = time.time()
