@@ -170,7 +170,8 @@ class LibraryConverter:
                     continue
             else:
                 try: # Convert Book to target format (target is not kepub)
-                    target_filepath = f"{self.tmp_conversion_dir}{Path(file).stem}.{self.target_format}"
+                    target_filename = f"{Path(file).parent.stem}_{Path(file).stem}"
+                    target_filepath = f"{self.tmp_conversion_dir}{target_filename}.{self.target_format}"
                     with subprocess.Popen(
                         ["ebook-convert", file, target_filepath],
                         stdout=subprocess.PIPE,
