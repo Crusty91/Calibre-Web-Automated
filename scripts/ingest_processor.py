@@ -103,7 +103,7 @@ class NewBookProcessor:
 
         original_filepath = Path(self.filepath)
         target_filename = f"{original_filepath.parent.stem}_{original_filepath.stem}"
-        target_filepath = f"{self.tmp_conversion_dir}{original_filepath.stem}.{end_format}"
+        target_filepath = f"{self.tmp_conversion_dir}{target_filename}.{end_format}"
         try:
             t_convert_book_start = time.time()
             subprocess.run(['ebook-convert', self.filepath, target_filepath], check=True)
@@ -114,7 +114,7 @@ class NewBookProcessor:
             if self.cwa_settings['auto_backup_conversions']:
                 self.backup(self.filepath, backup_type="converted")
 
-            self.db.conversion_add_entry(original_filepath.stem,
+            self.db.conversion_add_entry(target_filename,
                                         self.input_format,
                                         self.target_format,
                                         str(self.cwa_settings["auto_backup_conversions"]))
