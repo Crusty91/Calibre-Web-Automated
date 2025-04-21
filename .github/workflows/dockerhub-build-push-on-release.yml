@@ -2,6 +2,7 @@ name: Build & Push - Release
 # Automatically builds and pushes a multi-platform image based on the repo's newest release and tags it both as latest and with the version number of the release
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
