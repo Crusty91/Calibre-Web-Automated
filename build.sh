@@ -9,7 +9,7 @@ DH_USER="crocodilestick"
 # https://a-berahman.medium.com/simplifying-docker-multiplatform-builds-with-buildx-3d7efd670f58
 
 rm -r -f $REPO_DIR
-git clone http://github.com/crocodilestick/calibre-web-automated.git $REPO_DIR
+git clone https://github.com/Crusty91/Calibre-Web-Automated.git $REPO_DIR
 cd $REPO_DIR
 
 echo
