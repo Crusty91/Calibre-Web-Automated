@@ -109,7 +109,7 @@ class NewBookProcessor:
             subprocess.run(['ebook-convert', self.filepath, target_filepath], check=True)
             t_convert_book_end = time.time()
             time_book_conversion = t_convert_book_end - t_convert_book_start
-            print(f"\n[ingest-processor]: END_CON: Conversion of {self.filename} complete in {time_book_conversion:.2f} seconds.\n", flush=True)
+            print(f"\n[ingest-processor]: END_CON: Conversion of {self.filename} complete in {time_book_conversion:.2f} seconds into {target_filepath}.\n", flush=True)
 
             if self.cwa_settings['auto_backup_conversions']:
                 self.backup(self.filepath, backup_type="converted")
@@ -179,7 +179,7 @@ class NewBookProcessor:
             if Path(fixed_epub_path).exists():
                 book_path = self.empty_tmp_con_dir + os.path.basename(book_path)
 
-        print("[ingest-processor]: Importing new book to CWA...")
+        print(f"[ingest-processor]: Importing {book_path} to CWA...")
         import_path = Path(book_path)
         import_filename = os.path.basename(book_path)
         try:
